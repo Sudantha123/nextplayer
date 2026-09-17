@@ -53,7 +53,6 @@ import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Image
 import androidx.compose.material.icons.rounded.Info
-import androidx.compose.material.icons.rounded.Lan
 import androidx.compose.material.icons.rounded.Link
 import androidx.compose.material.icons.rounded.LocalMovies
 import androidx.compose.material.icons.rounded.LocationOn
@@ -128,7 +127,6 @@ object NextIcons {
     val Info = Icons.Rounded.Info
     val Home = Icons.Rounded.Home
     val HomeOutline = Icons.Outlined.Home
-    val Network = Icons.Rounded.Lan
     val Cloud = Icons.Rounded.Cloud
     val Dns = Icons.Rounded.Dns
     val Storage = Icons.Rounded.Storage

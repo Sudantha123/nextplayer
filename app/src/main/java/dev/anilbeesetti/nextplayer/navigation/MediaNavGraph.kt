@@ -37,8 +37,12 @@ fun EntryProviderScope<NavKey>.mediaNavGraph(
 
 }
 
-internal fun Context.startPlayback(uri: Uri, grantReadPermission: Boolean = false) {
-    startPlayback(uri = uri, playlist = null, grantReadPermission = grantReadPermission)
+internal fun Context.startPlayback(
+    uri: Uri,
+    title: String? = null,
+    grantReadPermission: Boolean = false,
+) {
+    startPlayback(uri = uri, playlist = null, title = title, grantReadPermission = grantReadPermission)
 }
 
 internal fun Context.startPlayback(
@@ -47,10 +51,15 @@ internal fun Context.startPlayback(
     grantReadPermission: Boolean = false,
 ) {
     val uri = startUri?.takeIf(uris::contains) ?: uris.firstOrNull() ?: return
-    startPlayback(uri = uri, playlist = uris, grantReadPermission = grantReadPermission)
+    startPlayback(uri = uri, playlist = uris, title = null, grantReadPermission = grantReadPermission)
 }
 
-private fun Context.startPlayback(uri: Uri, playlist: List<Uri>?, grantReadPermission: Boolean) {
+private fun Context.startPlayback(
+    uri: Uri,
+    playlist: List<Uri>?,
+    title: String?,
+    grantReadPermission: Boolean,
+) {
     if (grantReadPermission) {
         (playlist ?: listOf(uri)).forEach {
             grantUriPermission(packageName, it, Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -60,6 +69,7 @@ private fun Context.startPlayback(uri: Uri, playlist: List<Uri>?, grantReadPermi
         action = Intent.ACTION_VIEW
         data = uri
         playlist?.let { putParcelableArrayListExtra(PlayerApi.API_PLAYLIST, ArrayList(it)) }
+        title?.takeIf(String::isNotBlank)?.let { putExtra(PlayerApi.API_TITLE, it) }
         if (grantReadPermission) addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
     startActivity(intent)

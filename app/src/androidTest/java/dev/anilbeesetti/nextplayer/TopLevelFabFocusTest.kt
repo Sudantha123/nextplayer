@@ -47,21 +47,21 @@ class TopLevelFabFocusTest {
     fun playlistsFabUpReturnsToContent() = checkFabUp(tabIndex = 1)
 
     @Test
-    fun moreFabUpReturnsToContent() = checkFabUp(tabIndex = 3)
+    fun moreFabUpReturnsToContent() = checkFabUp(tabIndex = 2)
 
     @Test
     fun openingMoreFocusesItsFirstActionEvenAfterSwitchingTabs() {
-        composeRule.onAllNodes(tab)[3].performClick()
+        composeRule.onAllNodes(tab)[2].performClick()
         composeRule.onNodeWithText("Vault").assertIsFocused()
         composeRule.onNodeWithText("Pick file").requestFocus()
         composeRule.onAllNodes(tab)[0].performClick()
-        composeRule.onAllNodes(tab)[3].performClick()
+        composeRule.onAllNodes(tab)[2].performClick()
         composeRule.onNodeWithText("Vault").assertIsFocused()
     }
 
     @Test
     fun switchingTabsKeepsFabUpInTheCurrentScreen() {
-        listOf(2, 0, 3, 1, 0, 2, 3).forEach(::checkFabUp)
+        listOf(0, 1, 2, 0, 2, 1, 0).forEach(::checkFabUp)
     }
 
     private fun checkFabUp(tabIndex: Int) {

@@ -14,6 +14,9 @@ data class ApplicationPreferences(
     val mediaViewMode: MediaViewMode = MediaViewMode.FOLDERS,
     val mediaLayoutMode: MediaLayoutMode = MediaLayoutMode.LIST,
 
+    // Stream-Vault
+    val streamServerUrl: String = "",
+
     // Fields
     val showDurationField: Boolean = true,
     val showFolderDurationField: Boolean = true,
