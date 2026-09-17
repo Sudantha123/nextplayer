@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-Next Player is a Kotlin/Jetpack Compose multi-module Android app. `app/` owns application entry points and top-level navigation. Reusable layers live under `core/`; user-facing areas are split across `feature/player`, `feature/videopicker`, `feature/settings`, and `feature/network`.
+Next Player is a Kotlin/Jetpack Compose multi-module Android app. `app/` owns application entry points and top-level navigation. Reusable layers live under `core/`; user-facing areas are split across `feature/player`, `feature/videopicker`, `feature/settings`, and `feature/stream`.
 
 Kotlin sources are under each module's `src/main/java/`; resources are in `src/main/res/`. Place JVM and Robolectric tests in `src/test/`, and device tests in `src/androidTest/`. Release metadata and screenshots belong in `fastlane/metadata/`.
 
